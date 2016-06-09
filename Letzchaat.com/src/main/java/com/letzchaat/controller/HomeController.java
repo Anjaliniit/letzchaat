@@ -13,15 +13,11 @@ public class HomeController {
 	public ModelAndView home()
 	{
 		return new ModelAndView("index");
-		
-	}
+		}
 	
 	@RequestMapping("/")
-	ModelAndView home1(Model model)
+	ModelAndView home1()
 	{
-		model.addAttribute("user",new UserRegister());
 		return new ModelAndView("index");
-	}
-	
-	
+	}	
 }

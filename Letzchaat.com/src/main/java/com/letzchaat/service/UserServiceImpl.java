@@ -1,5 +1,7 @@
 package com.letzchaat.service;
 
+import java.util.List;
+
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -27,6 +29,11 @@ public class UserServiceImpl implements UserService {
 	public UserRegister getUserByEmailId(String emailid) {
 	
 		return userDAO.getUserByEmailId(emailid);
+	}
+	@Transactional
+	public List<UserRegister> getAllUsers() {
+		
+		return userDAO.getAllUsers();
 	}
 
 }

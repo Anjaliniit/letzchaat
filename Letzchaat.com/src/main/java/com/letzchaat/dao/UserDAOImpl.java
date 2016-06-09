@@ -1,5 +1,8 @@
 package com.letzchaat.dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
@@ -26,6 +29,14 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println("data of user by id="+u);
 		return u;	
 	
+	}
+	public List<UserRegister> getAllUsers() {
+		Session session=this.sessionFactory.getCurrentSession();
+		 Query query = session.createQuery("from UserRegister");
+	        List<UserRegister> userList = (List<UserRegister>)query.list();
+	        for(UserRegister u:userList) 
+	        	System.out.println(u.getEmailid());
+	        return userList;
 	}
 
 }

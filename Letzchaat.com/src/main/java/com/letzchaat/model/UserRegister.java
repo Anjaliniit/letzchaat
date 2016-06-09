@@ -23,6 +23,7 @@ private int id;
 @NotEmpty(message="fname can not be null")	
 private String fname;
 private String lname;
+@NotEmpty(message="email cannot be null")
 @Email
 private String emailid;
 
