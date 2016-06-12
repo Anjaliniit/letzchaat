@@ -6,7 +6,7 @@
 </div>
 
 <div id="body">
-index
+forum
 </div>
 
 <div id="footer">

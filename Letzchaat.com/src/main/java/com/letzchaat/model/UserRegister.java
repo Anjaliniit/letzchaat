@@ -2,6 +2,7 @@ package com.letzchaat.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,19 +15,19 @@ import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="user")
+@Table(name="User")
 public class UserRegister {
 
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
+@Column(name="userid")
 private int id;
 @NotEmpty(message="fname can not be null")	
 private String fname;
 private String lname;
 @NotEmpty(message="email cannot be null")
 @Email
-private String emailid;
-
+private String emailId;
 private long mobile;
 @Length(min=8, max=10)
 private String password;
@@ -34,6 +35,34 @@ private String password;
 private String gender;
 @DateTimeFormat(pattern="mm/dd/yyyy")
 private Date dob;
+private boolean isActive;
+
+/* constructor*/
+public UserRegister(){}
+/**
+ * @return the isActive
+ */
+public boolean isActive() {
+	return isActive;
+}
+/**
+ * @param isActive the isActive to set
+ */
+public void setActive(boolean isActive) {
+	this.isActive = isActive;
+}
+/**
+ * @return the emailId
+ */
+public String getEmailId() {
+	return emailId;
+}
+/**
+ * @param emailId the emailId to set
+ */
+public void setEmailId(String emailId) {
+	this.emailId = emailId;
+}
 /**
  * @return the id
  */
@@ -70,18 +99,7 @@ public String getLname() {
 public void setLname(String lname) {
 	this.lname = lname;
 }
-/**
- * @return the emailid
- */
-public String getEmailid() {
-	return emailid;
-}
-/**
- * @param emailid the emailid to set
- */
-public void setEmailid(String emailid) {
-	this.emailid = emailid;
-}
+
 /**
  * @return the mobile
  */

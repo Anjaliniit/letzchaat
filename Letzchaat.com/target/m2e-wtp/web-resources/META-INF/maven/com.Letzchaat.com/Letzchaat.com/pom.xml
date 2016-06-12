@@ -32,6 +32,24 @@
 	<version>3.0.1</version>
 </dependency>  
 
+<dependency>
+<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+			<scope>provided</scope>
+		</dependency>
+		
+
+
+
+
+
 <!--  spring core ,bean, context-->
 <dependency>
 	<groupId>org.springframework</groupId>
@@ -70,12 +88,18 @@
 	<artifactId>hibernate-core</artifactId>
 	<version>4.0.1.Final</version>
 </dependency>  
-<!-- validator -->		
+
+	<!-- validator -->		
 	<dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-validator</artifactId>
 		<version>4.2.0.Final</version>
 		</dependency>
+      <dependency>
+	<groupId>javax.validation</groupId>
+	<artifactId>validation-api</artifactId>
+	<version>1.0.0.GA</version>
+</dependency>
 <dependency>
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-orm</artifactId>
@@ -87,6 +111,15 @@
 	<artifactId>javax.inject</artifactId>
 	<version>1</version>
 </dependency>
+ <!-- spring transaction   -->
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-tx</artifactId>
+	<version>4.0.1.RELEASE</version>
+</dependency>
+
+
+
 
 <!--  spring security -->
 
@@ -132,3 +165,4 @@
     <finalName>Letzchaat.com</finalName>
   </build>
 </project>
+

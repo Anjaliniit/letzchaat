@@ -32,9 +32,9 @@
 			<div class=col-xs-5><form:errors path="lname" cssStyle="color: #ff0000;"/></div>
 		</div>
 		<div class="row">
-			<div class=col-xs-3><form:label path="emailid"><spring:message text="Email"/></form:label></div>
-			<div class=col-xs-4><form:input path="emailid"/></div>
-			<div class=col-xs-5><form:errors path="emailid" cssStyle="color: #ff0000;"/><span>${emailMsg}</span></div>
+			<div class=col-xs-3><form:label path="emailId"><spring:message text="Email"/></form:label></div>
+			<div class=col-xs-4><form:input path="emailId"/></div>
+			<div class=col-xs-5><form:errors path="emailId" cssStyle="color: #ff0000;"/><span>${emailMsg}</span></div>
 		</div>
 	    <div class="row">
 			<div class=col-xs-3><form:label path="password"><spring:message text="Password"/></form:label></div>

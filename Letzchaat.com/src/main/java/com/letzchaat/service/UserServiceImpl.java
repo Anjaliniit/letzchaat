@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	public UserRegister getUserByEmailId(String emailid) {
-	
+	    System.out.println("in service");
 		return userDAO.getUserByEmailId(emailid);
 	}
 	@Transactional

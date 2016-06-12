@@ -12,18 +12,26 @@
 <div class="row">
 <div class="col-md-4"></div>
 <div class="col-md-4">
-<form:form method="post" modelAttribute="ulogin" commandName="ulogin" class="form-sigin" action="ulogin">
+		 <c:if test="${not empty msg}">
+                <div class="msg">${msg}</div>
+            </c:if>
+
+		 <c:if test="${not empty error}">
+                <div class="msg">${error}</div>
+            </c:if>
+<form:form method="post" modelAttribute="ulogin" commandName="ulogin" class="form-sigin" action="ulogin" >
  <h2 class="form-signin-heading">Please sign in</h2>
  <label for="inputEmail" class="sr-only">Username</label>
-        <form:input type="text" path="emailid" class="form-control" placeholder="Enter Username"/>
-        <label for="inputPassword" class="sr-only">Password</label><form:errors path="emailid" cssStyle="color: #ff0000;"/>
-        <form:input type="password" path="password" class="form-control" placeholder="Password"/><form:errors path="password" cssStyle="color: #ff0000;"/>
+        <form:input type="text" path="emailId" name="emailId" class="form-control" placeholder="Enter Username"/>
+        <label for="inputPassword" class="sr-only">Password</label><form:errors path="emailId" cssStyle="color: #ff0000;"/>
+        <form:input type="password" path="password" name="password" class="form-control" placeholder="Password"/><form:errors path="password" cssStyle="color: #ff0000;"/>
         <div class="checkbox">
           <label>
             <input type="checkbox" value="remember-me"> Remember me
           </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
   </form:form>
 </div>
 <div class="col-md-4"></div>

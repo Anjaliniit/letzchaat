@@ -45,12 +45,11 @@
     <ul class="nav navbar-nav">
      <li class="active"><a href="${pageContext.request.contextPath}/index">Home</a></li>
      <li><a href="${pageContext.request.contextPath}/index">AboutUs</a></li>
-     <li><a href="${pageContext.request.contextPath}/bulletin">Bulletin</a></li>
-     <li><a href="${pageContext.request.contextPath}/jobs">Jobs</a></li>
-     <c:if test="${pageContext.request.userPrincipal.name == 'admin@gmail.com'}">
+     <li><a href="${pageContext.request.contextPath}/index">Bulletin</a></li>
+     <li><a href="${pageContext.request.contextPath}/index">Jobs</a></li>
+     <c:if test="${pageContext.request.userPrincipal.name == 'admin'}">
                       <li><a href="${pageContext.request.contextPath}/forum">Forum</a></li>
                       <li><a href="${pageContext.request.contextPath}/blog">Blog</a></li>
-                      <li><a href="${pageContext.request.contextPath}/member">member</a></li>
      </c:if>
      
   </ul>

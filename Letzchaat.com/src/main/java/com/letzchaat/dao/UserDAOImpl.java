@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
+import com.letzchaat.model.Authorization;
 import com.letzchaat.model.UserRegister;
 
 @Repository
@@ -19,7 +20,12 @@ public class UserDAOImpl implements UserDAO {
 	}
 	public void addUser(UserRegister user) {
 		Session session=this.sessionFactory.getCurrentSession();
+		user.setActive(true);
+		Authorization auth=new Authorization();
+		auth.setRole("ROLE_USER");
+		auth.setEmailId(user.getEmailId());
 		session.persist(user);
+		session.persist(auth);
 		System.out.println("user register successfully="+user);
 	}
 	public UserRegister getUserByEmailId(String emailid) {
@@ -28,14 +34,13 @@ public class UserDAOImpl implements UserDAO {
 		UserRegister u=(UserRegister) session.load(UserRegister.class,emailid);
 		System.out.println("data of user by id="+u);
 		return u;	
-	
 	}
 	public List<UserRegister> getAllUsers() {
 		Session session=this.sessionFactory.getCurrentSession();
 		 Query query = session.createQuery("from UserRegister");
 	        List<UserRegister> userList = (List<UserRegister>)query.list();
 	        for(UserRegister u:userList) 
-	        	System.out.println(u.getEmailid());
+	        	System.out.println(u.getEmailId());
 	        return userList;
 	}
 
