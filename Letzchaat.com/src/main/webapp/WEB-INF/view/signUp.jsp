@@ -20,7 +20,7 @@
 <div class="col-xs-9">
 
 <div class="container central">
-		<form:form action="register" model="user" commandName="user">	
+		<form:form action="${pageContext.request.contextPath}/signup" model="user" commandName="user" method="post">	
 		<div class="row">
 			<div class=col-xs-3><form:label path="fname"><spring:message text="FirstName"/></form:label></div>
 			<div class=col-xs-4><form:input path="fname"/></div>

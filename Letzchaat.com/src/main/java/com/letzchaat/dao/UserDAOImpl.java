@@ -24,6 +24,8 @@ public class UserDAOImpl implements UserDAO {
 		Authorization auth=new Authorization();
 		auth.setRole("ROLE_USER");
 		auth.setEmailId(user.getEmailId());
+		//Forum f=new Forum();
+		user.setForumsCount(0);
 		session.persist(user);
 		session.persist(auth);
 		System.out.println("user register successfully="+user);

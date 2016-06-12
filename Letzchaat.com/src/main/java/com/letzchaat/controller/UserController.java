@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import com.letzchaat.model.UserRegister;
@@ -31,25 +32,27 @@ public class UserController {
 	 * signup mapping
 	 * */
 	@RequestMapping("/signup")
-	public ModelAndView signUp(Model model)
+	public String signUp(Model model)
 	{
 		model.addAttribute("user",new UserRegister());
-		return new ModelAndView("signUp");
+		return "signUp";
 	}
-	
 	
 	/*register mapping of user*/
 	
 	
-	@RequestMapping(value="/register")
-	String addUser(@Valid @ModelAttribute("user") UserRegister u,BindingResult result,Model model)
-	{
+	@RequestMapping(value="/signup", method = RequestMethod.POST)
+	String signUpPost(@Valid @ModelAttribute("user") UserRegister u,BindingResult result,Model model)
+	{String value1;
 		System.out.println("register");
 			this.user=u;
 			if(result.hasErrors()){
 				return "signUp";	
 			}
+			else{
+			System.out.println("register1");
 	        List<UserRegister> userList = userService.getAllUsers();
+	        System.out.println("register2");
 	        for(UserRegister userL:userList)
 	        {
 	            if(user.getEmailId().equals(userL.getEmailId())){
@@ -58,7 +61,10 @@ public class UserController {
 	              }
 	        }
 	        userService.addUser(u);
-		    return"redirect:/profile";
+	        value1="user/profile";
+	        System.out.println("register3"+value1);
+	        }
+		    return "redirect:/"+value1;
 	}
 
 	/*login mapping*/
@@ -73,26 +79,20 @@ public class UserController {
 			if (logout !=null){
 			model.addAttribute("msg", "You have been logged out successfully !!!!");
 			}
-			
-		return new ModelAndView("login");
+			model.addAttribute("ulogin",new UserRegister());
+			return new ModelAndView("login");
 	}
 
-	@ModelAttribute("ulogin")
-	public UserRegister getLast()
-	{
-		return new UserRegister();
-		
-	}
 	
-	@RequestMapping(value="/ulogin")
-	public String ulogin(@Valid @ModelAttribute("ulogin") UserRegister u,BindingResult result,Model model)
-	{   String value=null;
+	@RequestMapping(value="/login",method = RequestMethod.POST)
+	public String loginPagePost(@Valid @ModelAttribute("ulogin") UserRegister u,BindingResult result,Model model)
+	{ 
+		String value=null;
 		this.ulogin=u;
 		if(result.hasErrors()){
 			return "login";	
 		}
-		else
-		{
+		else{
         List<UserRegister> userList = userService.getAllUsers();
         for(UserRegister userL:userList)
         {
@@ -105,17 +105,12 @@ public class UserController {
             }
         }
         return "redirect:/"+value;	
-	}
+		}
 }
-	
-	
-	
-	
-	
-		@RequestMapping("/profile")
+	@RequestMapping("/user/profile")
 	public ModelAndView profile()
 	{
-		return new ModelAndView("user/profile");
+		return new ModelAndView("profile");
 	}
 	
 	

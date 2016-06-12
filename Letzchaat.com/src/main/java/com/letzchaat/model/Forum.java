@@ -9,32 +9,31 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 @Entity
 public class Forum implements Serializable {
-
-
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 @Column(name="forumid")	
 private int id;
-@OneToOne(cascade = CascadeType.ALL)
+@ManyToOne
 @JoinColumn(name = "userid")
-private int owner;
+private UserRegister user;
 private String topic; 
 
 /**
- * @return the owner
+ * @return the user
  */
-public int getOwner() {
-	return owner;
+public UserRegister getUser() {
+	return user;
 }
 /**
- * @param owner the owner to set
+ * @param user the user to set
  */
-public void setOwner(int owner) {
-	this.owner = owner;
+public void setUser(UserRegister user) {
+	this.user = user;
 }
 /**
  * @return the topic
@@ -61,21 +60,4 @@ public int getId() {
 public void setId(int id) {
 	this.id = id;
 }
-/**
- * @return the owner
- */
-public int getGroupowner() {
-	return owner;
-}
-/**
- * @param owner the owner to set
- */
-public void setGroupowner(int owner) {
-	this.owner = owner;
-}
-
-	
-	
-	
-	
 }

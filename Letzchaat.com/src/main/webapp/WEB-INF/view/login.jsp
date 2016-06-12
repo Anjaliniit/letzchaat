@@ -17,9 +17,9 @@
             </c:if>
 
 		 <c:if test="${not empty error}">
-                <div class="msg">${error}</div>
+                <div class="error">${error}</div>
             </c:if>
-<form:form method="post" modelAttribute="ulogin" commandName="ulogin" class="form-sigin" action="ulogin" >
+<form:form method="post" modelAttribute="ulogin" commandName="ulogin" class="form-sigin" action="${pageContext.request.contextPath}/login" >
  <h2 class="form-signin-heading">Please sign in</h2>
  <label for="inputEmail" class="sr-only">Username</label>
         <form:input type="text" path="emailId" name="emailId" class="form-control" placeholder="Enter Username"/>
