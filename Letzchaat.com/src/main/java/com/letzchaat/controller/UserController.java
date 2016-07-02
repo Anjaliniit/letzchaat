@@ -68,10 +68,11 @@ public class UserController {
 	}
 
 	/*login mapping*/
-	@RequestMapping(value = "/login")
+	@RequestMapping(value="/login")
 	public ModelAndView loginPage(@RequestParam(value="error", required = false)
 	String error,@RequestParam(value="logout", required = false)String logout,Model model) {
-		
+		model.addAttribute("ulogin",new UserRegister());
+		System.out.println("register");
 		if(error != null){
 			model.addAttribute("error", "Invalid username and password");
 			}
@@ -79,20 +80,21 @@ public class UserController {
 			if (logout !=null){
 			model.addAttribute("msg", "You have been logged out successfully !!!!");
 			}
-			model.addAttribute("ulogin",new UserRegister());
+			
 			return new ModelAndView("login");
 	}
 
 	
 	@RequestMapping(value="/login",method = RequestMethod.POST)
 	public String loginPagePost(@Valid @ModelAttribute("ulogin") UserRegister u,BindingResult result,Model model)
-	{ 
+	{ System.out.println("register");
 		String value=null;
 		this.ulogin=u;
 		if(result.hasErrors()){
 			return "login";	
 		}
 		else{
+			System.out.println("register");
         List<UserRegister> userList = userService.getAllUsers();
         for(UserRegister userL:userList)
         {
@@ -100,7 +102,9 @@ public class UserController {
                  value="user/profile";
               }
             else
-            { model.addAttribute("userpass","username and password does not exits");
+            	
+            { System.out.println("not exits");
+            	model.addAttribute("userpass","username and password does not exits");
             	value="index";
             }
         }
@@ -113,10 +117,10 @@ public class UserController {
 		return new ModelAndView("profile");
 	}
 	
-	
+/*	
 	@RequestMapping("/forum")
 	public ModelAndView home()
 	{
 		return new ModelAndView("forum");
-	}	
+	}	*/
 }

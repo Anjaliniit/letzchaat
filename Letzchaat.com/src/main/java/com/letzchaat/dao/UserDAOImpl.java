@@ -45,5 +45,18 @@ public class UserDAOImpl implements UserDAO {
 	        	System.out.println(u.getEmailId());
 	        return userList;
 	}
+	public int getUserId(String emailid) {
+		System.out.println(emailid);
+		int uid=0;
+		Session session=this.sessionFactory.getCurrentSession();
+		Query q=session.createQuery("from UserRegister u where u.emailId=:emailid");
+		q.setString("emailid",emailid);
+		 List<UserRegister>  userList=(List<UserRegister>)q.list();
+		 for(UserRegister u:userList) 
+			 uid=u.getId();
+	        	System.out.println(uid);
+		
+	      return uid;
+	}
 
 }

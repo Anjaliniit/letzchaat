@@ -35,5 +35,9 @@ public class UserServiceImpl implements UserService {
 		
 		return userDAO.getAllUsers();
 	}
+	@Transactional
+	public int getUserId(String emailid) {
+				return userDAO.getUserId(emailid);
+	}
 
 }

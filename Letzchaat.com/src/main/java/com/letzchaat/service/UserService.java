@@ -8,4 +8,5 @@ public interface UserService {
 	void addUser(UserRegister user);
 	UserRegister getUserByEmailId(String emailid);
 	List<UserRegister> getAllUsers();
+	int getUserId(String emailid);
 }
