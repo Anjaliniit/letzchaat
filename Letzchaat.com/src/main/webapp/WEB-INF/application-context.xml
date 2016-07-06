@@ -52,6 +52,17 @@
         <property name="forumDAO" ref="forumDAO"></property>
     </bean>
     
+    <!-- blog bean -->
+     <bean id="blogDAO" class="com.letzchaat.dao.BlogDAOImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="blogService" class="com.letzchaat.service.BlogServiceImpl">
+        <property name="blogDAO" ref="blogDAO"></property>
+    </bean>
+    
+    
+    
+    
     
      <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
     <!-- transaction mapping -->

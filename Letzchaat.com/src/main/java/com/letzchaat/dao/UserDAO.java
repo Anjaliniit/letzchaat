@@ -6,8 +6,9 @@ import com.letzchaat.model.UserRegister;
 
 public interface UserDAO {
 void addUser(UserRegister user);
-UserRegister getUserByEmailId(String emailid);
-int getUserId(String emailid);
+UserRegister getUserByEmailId(String emailId);
+UserRegister getUserById(int userId);
+int getUserId(String emailId);
 List<UserRegister> getAllUsers();
 
 

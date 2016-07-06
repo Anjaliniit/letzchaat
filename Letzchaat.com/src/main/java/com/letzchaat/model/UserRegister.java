@@ -1,5 +1,6 @@
 package com.letzchaat.model;
 
+import java.io.Serializable;
 import java.nio.MappedByteBuffer;
 import java.util.Date;
 import java.util.Set;
@@ -7,6 +8,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="user")
-public class UserRegister {
+public class UserRegister implements Serializable {
 
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -42,7 +44,7 @@ private Date dob;
 private boolean isActive;
 //private int blogsCount;
 private int forumsCount;
-@OneToMany(mappedBy="user",cascade = CascadeType.ALL)
+@OneToMany(mappedBy="user",cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 Set<Forum> forumDetails;
 
 /*default constructor*/
@@ -50,6 +52,7 @@ public UserRegister(){}
 /**
  * @return the forumDetails
  */
+
 public Set<Forum> getForumDetails() {
 	return forumDetails;
 }

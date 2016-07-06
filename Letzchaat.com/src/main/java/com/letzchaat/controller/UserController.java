@@ -2,6 +2,7 @@ package com.letzchaat.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,18 +15,29 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.letzchaat.model.Forum;
 import com.letzchaat.model.UserRegister;
+import com.letzchaat.service.BlogService;
 import com.letzchaat.service.UserService;
 
 @Controller
 public class UserController {
 	UserRegister user,ulogin;
 	UserService userService;
+	BlogService blogService;
 	@Autowired(required=true)
 	@Qualifier(value="userService")
-	public void setUserService(UserService us)
+	public void setUserService(UserService userService)
 	{
-		this.userService=us;
+		this.userService=userService;
+	}
+	
+	@Autowired(required=true)
+	@Qualifier(value="blogService")
+	public void setBlogService(BlogService blogService)
+	{
+		this.blogService=blogService;
 	}
 	
 	/*
@@ -116,6 +128,26 @@ public class UserController {
 	{
 		return new ModelAndView("profile");
 	}
+	
+	/* request mapping of admin page of blog*/
+	@RequestMapping("/user/blog")
+	public ModelAndView adminBlog(Model model,HttpServletRequest request)
+	{	Forum f=new Forum();	
+	 	model.addAttribute("listblog", blogService.getAllBlogs());
+	 	//System.out.println(new Gson().toJson(forumService.getAllProducts()));
+		model.addAttribute("blog",f);
+		return new ModelAndView("blog");
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 /*	
 	@RequestMapping("/forum")

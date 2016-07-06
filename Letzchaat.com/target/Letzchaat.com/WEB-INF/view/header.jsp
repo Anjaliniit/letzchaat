@@ -49,7 +49,7 @@
      <li><a href="${pageContext.request.contextPath}/jobs">Jobs</a></li>
      <c:if test="${pageContext.request.userPrincipal.name == 'admin@gmail.com'}">
        
-                      <li><a href="${pageContext.request.contextPath}/admin/forum?loginid=${pageContext.request.userPrincipal.name}">Forum</a></li>
+                      <li><a href="${pageContext.request.contextPath}/admin/forum">Forum</a></li>
                       <li><a href="${pageContext.request.contextPath}/admin/blog">Blog</a></li>
                       <li><a href="${pageContext.request.contextPath}/admin/member">member</a></li>
     

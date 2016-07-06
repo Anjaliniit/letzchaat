@@ -5,7 +5,6 @@
 <div id="header">
 <%@include file="header.jsp"%>
 </div>
-
 <div id="body">
 <p>&nbsp;</p>
 <p>&nbsp;</p>

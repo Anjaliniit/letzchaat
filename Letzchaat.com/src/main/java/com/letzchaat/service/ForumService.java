@@ -8,8 +8,9 @@ public interface ForumService {
 
 
 void addForum(Forum forum);
-Forum getForumByUserId(int userid);
+Forum getForumByUserId(int userId);
 List<Forum> getAllForums();
-	
-	
+void removeForum(int forumId);
+void updateForum(Forum f);
+Forum getForumById(int forumId);
 }

@@ -33,8 +33,8 @@
 </dependency>  
 
 <dependency>
-<groupId>javax.servlet.jsp</groupId>
-			<artifactId>jsp-api</artifactId>
+	<groupId>javax.servlet.jsp</groupId>
+	<artifactId>jsp-api</artifactId>
 			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
@@ -75,6 +75,11 @@
 	<groupId>org.springframework</groupId>
 	<artifactId>spring-web</artifactId>
 	<version>4.2.5.RELEASE</version>
+</dependency>
+<dependency>
+	<groupId>org.springframework</groupId>
+	<artifactId>spring-orm</artifactId>
+	<version>4.2.5.RELEASE</version>
 </dependency> 
 <!-- h2 database -->
 <dependency>
@@ -89,6 +94,14 @@
 	<version>4.0.1.Final</version>
 </dependency>  
 
+
+<!-- javax persistence -->
+<dependency>
+	<groupId>javax.persistence</groupId>
+	<artifactId>persistence-api</artifactId>
+	<version>1.0.2</version>
+</dependency>
+
 	<!-- validator -->		
 	<dependency>
 		<groupId>org.hibernate</groupId>
@@ -100,11 +113,7 @@
 	<artifactId>validation-api</artifactId>
 	<version>1.0.0.GA</version>
 </dependency>
-<dependency>
-	<groupId>org.springframework</groupId>
-	<artifactId>spring-orm</artifactId>
-	<version>4.2.5.RELEASE</version>
-</dependency>
+
  <!-- java injection -->
 <dependency>
 	<groupId>javax.inject</groupId>
@@ -117,9 +126,6 @@
 	<artifactId>spring-tx</artifactId>
 	<version>4.0.1.RELEASE</version>
 </dependency>
-
-
-
 
 <!--  spring security -->
 

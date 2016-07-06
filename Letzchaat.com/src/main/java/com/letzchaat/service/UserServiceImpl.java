@@ -26,9 +26,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Transactional
-	public UserRegister getUserByEmailId(String emailid) {
+	public UserRegister getUserByEmailId(String emailId) {
 	    System.out.println("in service");
-		return userDAO.getUserByEmailId(emailid);
+		return userDAO.getUserByEmailId(emailId);
 	}
 	@Transactional
 	public List<UserRegister> getAllUsers() {
@@ -36,8 +36,13 @@ public class UserServiceImpl implements UserService {
 		return userDAO.getAllUsers();
 	}
 	@Transactional
-	public int getUserId(String emailid) {
-				return userDAO.getUserId(emailid);
+	public int getUserId(String emailId) {
+				return userDAO.getUserId(emailId);
+	}
+	@Transactional
+	public UserRegister getUserById(int userId) {
+		// TODO Auto-generated method stub
+		return userDAO.getUserById(userId);
 	}
 
 }

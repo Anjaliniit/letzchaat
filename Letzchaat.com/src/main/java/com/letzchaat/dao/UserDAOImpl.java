@@ -30,10 +30,10 @@ public class UserDAOImpl implements UserDAO {
 		session.persist(auth);
 		System.out.println("user register successfully="+user);
 	}
-	public UserRegister getUserByEmailId(String emailid) {
+	public UserRegister getUserByEmailId(String emailId) {
 		
 		Session session=this.sessionFactory.getCurrentSession();
-		UserRegister u=(UserRegister) session.load(UserRegister.class,emailid);
+		UserRegister u=(UserRegister) session.load(UserRegister.class,emailId);
 		System.out.println("data of user by id="+u);
 		return u;	
 	}
@@ -45,12 +45,12 @@ public class UserDAOImpl implements UserDAO {
 	        	System.out.println(u.getEmailId());
 	        return userList;
 	}
-	public int getUserId(String emailid) {
-		System.out.println(emailid);
+	public int getUserId(String emailId) {
+		System.out.println(emailId);
 		int uid=0;
 		Session session=this.sessionFactory.getCurrentSession();
 		Query q=session.createQuery("from UserRegister u where u.emailId=:emailid");
-		q.setString("emailid",emailid);
+		q.setString("emailid",emailId);
 		 List<UserRegister>  userList=(List<UserRegister>)q.list();
 		 for(UserRegister u:userList) 
 			 uid=u.getId();
@@ -58,5 +58,11 @@ public class UserDAOImpl implements UserDAO {
 		
 	      return uid;
 	}
+	public UserRegister getUserById(int userid) {
+		Session session=this.sessionFactory.getCurrentSession();
+		UserRegister u=(UserRegister) session.load(UserRegister.class,userid);
+		System.out.println("data of user by id="+u);
+		return u;	
+		}
 
 }

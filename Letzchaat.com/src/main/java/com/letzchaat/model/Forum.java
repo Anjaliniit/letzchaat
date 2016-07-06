@@ -25,7 +25,7 @@ private int id;
 private String name;
 
 @ManyToOne
-@JoinColumn(name = "userid")
+@JoinColumn(name ="userid")
 private UserRegister user;
 @NotEmpty(message="topic can not be empty")
 private String topic; 

@@ -1,3 +1,4 @@
+<%@page isELIgnored="false" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <div id="main">
@@ -12,7 +13,7 @@
 	<div class=col-md-4></div>
 </div>
 				
-<form:form action="forum/add" modelAttribute="forum" commandName="forum" method="post">
+<form:form action="${pageContext.request.contextPath}/admin/forum/add" modelAttribute="forum" commandName="forum" method="post">
 <c:if test="${!empty forum.name}">
 <div class="row">
 	<div class=col-md-4></div>
@@ -33,20 +34,19 @@
 <div class="row">
 	<div class=col-md-4></div>
 	<div class=col-md-2><form:label path="topic"><spring:message text="FORUM TOPIC"/></form:label></div>
-	<div class=col-md-2> <form:input path="topic"/>
-            <form:hidden path="topic" /></div>
+	<div class=col-md-2> <form:input path="topic"/></div>
 	<div class=col-md-2><form:errors path="topic" cssStyle="color: #ff0000;"/></div>
 	<div class=col-md-2></div>
 </div>
-
+<%-- 
 <div class="row">
 	<div class=col-md-4></div>
 	<div class=col-md-2><form:label path="user"><spring:message text="USER"/></form:label></div>
 	<div class=col-md-2> <form:input path="user" value="${userid}"/></div>
-	<div class=col-md-2><form:errors path="user" cssStyle="color: #ff0000;"/></div>
+	<div class=col-md-2></div>
 	<div class=col-md-2></div>
 </div>
-	
+ --%>	
 <div class="row">
 	<div class=col-md-4></div>
 	<div class=col-md-2></div>
