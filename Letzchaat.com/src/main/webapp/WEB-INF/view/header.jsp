@@ -45,6 +45,23 @@
       color: #fff !important;
   }
   
+  .container-fluid about
+  { margin-left: 20px;
+  	padding: 60px 50px;					
+  }
+ 
+ #myCarousel1 carousel-inner .item > img {
+  display: block;
+  line-height: 1;
+}
+  
+ #myCarousel1 .carousel-indicators {
+  bottom:-50px;
+}
+#myCarousel1 .carousel-inner {
+  margin-top:80px;
+   margin-bottom:50px;
+}
    .carousel-control.right, .carousel-control.left {
       background-image: none;
       color: #1abc9c;
@@ -169,8 +186,9 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="active"><a href="${pageContext.request.contextPath}/index">HOME</a></li>
-        <li><a href="#aboutus">ABOUTUS</a></li>
         <li><a href="#bulletin">BULLETIN</a></li>
+        <li><a href="#aboutus">ABOUTUS</a></li>
+        
         <li><a href="${pageContext.request.contextPath}/index">JOBS</a></li>
         
          <c:if test="${pageContext.request.userPrincipal.name == 'admin@gmail.com'}">
