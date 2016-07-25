@@ -61,9 +61,6 @@
     </bean>
     
     
-    
-    
-    
      <tx:annotation-driven transaction-manager="hibernateTransactionManager"/>
     <!-- transaction mapping -->
     <bean id="hibernateTransactionManager"

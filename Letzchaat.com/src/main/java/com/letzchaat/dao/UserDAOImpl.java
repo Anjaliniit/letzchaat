@@ -31,9 +31,9 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println("user register successfully="+user);
 	}
 	public UserRegister getUserByEmailId(String emailId) {
-		
+		System.out.println("getting data in dao based on emailid");
 		Session session=this.sessionFactory.getCurrentSession();
-		UserRegister u=(UserRegister) session.load(UserRegister.class,emailId);
+		UserRegister u=(UserRegister) session.get(UserRegister.class,emailId);
 		System.out.println("data of user by id="+u);
 		return u;	
 	}
@@ -64,5 +64,12 @@ public class UserDAOImpl implements UserDAO {
 		System.out.println("data of user by id="+u);
 		return u;	
 		}
+	public void updateUser(UserRegister u) {
+		Session session=this.sessionFactory.getCurrentSession();
+        session.update(u);
+        System.out.println("data updated successfully="+u);
+
+		
+	}
 
 }

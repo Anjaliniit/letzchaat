@@ -22,7 +22,7 @@ var app=angular.module("searchApp",[]).controller("TableCtrl",function($scope)
 
 </script> 
 </head>
-<form:form action="addblog" method="post" commandName="blog">
+<form:form action="${pageContext.request.contextPath}/admin/blog/add" method="post" commandName="blog">
 
 <body>
  
@@ -44,7 +44,7 @@ var app=angular.module("searchApp",[]).controller("TableCtrl",function($scope)
                 <div class="form-group">
                     <label for="InputMessage">BLOG POST CONTENT</label>
                     <div class="input-group">
-                        <textarea name="content" id="content1" class="form-control" rows="5" required></textarea>
+                        <textarea name="description" id="description" class="form-control" rows="5" required></textarea>
                         <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
                     </div>
                 </div>
@@ -57,6 +57,64 @@ var app=angular.module("searchApp",[]).controller("TableCtrl",function($scope)
           
         </form:form>
        
+   <div class="row"><div class="col-xs-10"><center><h3 style="color:blue">Blog LIST</h3></center></div></div>
+<div class="row">
+<div class="col-xs-1"></div>
+
+<div class="col-xs-10">
+
+<c:if test="${!empty listBlog}">
+    <div class="table-responsive">
+    <table class="table table-striped table-bordered w3-blue">
+    <thead>
+    <tr>
+        <th>Blog Id</th>
+        <th>Blog Title</th>
+        <th>Blog Content</th>
+        <th>Blog User</th>
+        <th>Edit</th>
+        
+    </tr>
+    </thead>
+    <tbody>
+    <c:forEach items="${listBlog}" var="blog">
+        <tr>
+            <td>${blog.blogid}</td>
+            <td>${blog.title}</td>
+            <td>${blog.description}</td>
+            <td>${blog.userid}</td>     
+           
+            <td><a href="<c:url value='/admin/deleteb/${blog.blogid}' />" >Delete</a></td>
+        </tr>
+    </c:forEach>
+    <tbody>
+    </table>
+ </div>
+</c:if></div>
+<div class="col-xs-1"></div>
+</div>
+
+
+
+
+
+
+					
+
+
+
+
+
+
+
+
+<div id="footer">
+<%@include file="footer.jsp"%>
+</div>
+
+
+
+
    
              
            

@@ -17,6 +17,13 @@
  <!-- Configures the @Controller programming model -->  
 <mvc:annotation-driven/>
  <mvc:default-servlet-handler/>
+ 
+ <!-- Creating bean multipart resolver for images --> 
+ <bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5242880" />
+	</bean>
+	
  <!-- Resolves view names to protected .jsp resources within the /WEB-INF/views directory -->  
 
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

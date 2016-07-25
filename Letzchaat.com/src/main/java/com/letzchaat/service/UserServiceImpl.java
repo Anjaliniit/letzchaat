@@ -27,7 +27,7 @@ public class UserServiceImpl implements UserService {
 
 	@Transactional
 	public UserRegister getUserByEmailId(String emailId) {
-	    System.out.println("in service");
+	    System.out.println("in service"+emailId);
 		return userDAO.getUserByEmailId(emailId);
 	}
 	@Transactional
@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
 	public UserRegister getUserById(int userId) {
 		// TODO Auto-generated method stub
 		return userDAO.getUserById(userId);
+	}
+
+	public void updateUser(UserRegister u) {
+		userDAO.updateUser(u);
+		
 	}
 
 }

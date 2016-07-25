@@ -5,7 +5,8 @@
 <div id="header">
 <%@include file="header.jsp"%>
 </div>
-
+<br><br>
+<br>
 <div id="body">
 <div class="row">
 	<div class=col-md-4></div>
@@ -17,9 +18,9 @@
 <c:if test="${!empty forum.name}">
 <div class="row">
 	<div class=col-md-4></div>
-	<div class=col-md-2><form:label path="id"><spring:message text="ID"/></form:label></div>
-	<div class=col-md-2> <form:input path="id" readonly="true" size="8"  disabled="true" />
-            <form:hidden path="id" /></div>
+	<div class=col-md-2><form:label path="forumid"><spring:message text="ID"/></form:label></div>
+	<div class=col-md-2> <form:input path="forumid" readonly="true" size="8"  disabled="true" />
+            <form:hidden path="forumid" /></div>
 	<div class=col-md-2></div>
 	<div class=col-md-2></div>
 </div>	
@@ -37,16 +38,7 @@
 	<div class=col-md-2> <form:input path="topic"/></div>
 	<div class=col-md-2><form:errors path="topic" cssStyle="color: #ff0000;"/></div>
 	<div class=col-md-2></div>
-</div>
-<%-- 
-<div class="row">
-	<div class=col-md-4></div>
-	<div class=col-md-2><form:label path="user"><spring:message text="USER"/></form:label></div>
-	<div class=col-md-2> <form:input path="user" value="${userid}"/></div>
-	<div class=col-md-2></div>
-	<div class=col-md-2></div>
-</div>
- --%>	
+</div> 
 <div class="row">
 	<div class=col-md-4></div>
 	<div class=col-md-2></div>
@@ -86,12 +78,12 @@
     <tbody>
     <c:forEach items="${listForum}" var="forum">
         <tr>
-            <td>${forum.id}</td>
+            <td>${forum.forumid}</td>
             <td>${forum.name}</td>
             <td>${forum.topic}</td>
-            <td>${forum.user.id}</td>     
-            <td><a href="<c:url value='/admin/edit/${forum.id}' />" >Edit</a></td>
-            <td><a href="<c:url value='/admin/delete/${forum.id}' />" >Delete</a></td>
+            <td>${forum.forumid}</td>     
+            <td><a href="<c:url value='/admin/edit/${forum.forumid}' />" >Edit</a></td>
+            <td><a href="<c:url value='/admin/delete/${forum.forumid}' />" >Delete</a></td>
         </tr>
     </c:forEach>
     <tbody>

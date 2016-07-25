@@ -20,37 +20,32 @@ public class ForumDAOImpl implements ForumDAO {
 		session.persist(forum);
 		System.out.println("forum created successfully="+forum);
 	}
-	public Forum getForumByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	public List<Forum> getAllForums() {
 		Session session=this.sessionFactory.getCurrentSession();
-		 Query query = session.createQuery("from Forum");
+		 Query query = session.createQuery("from Forum");											
 	        List<Forum> forumList = (List<Forum>)query.list();
 	        for(Forum f:forumList) 
-	        	System.out.println(f.getId());
+	        	System.out.println(f.getForumid());
 	        return forumList;
 		
 	}
 	public void removeForum(int forumId) {
 		Session session=this.sessionFactory.getCurrentSession();
 		Forum f=(Forum)session.load(Forum.class,new Integer(forumId));
-        session.delete(f);
+		session.delete(f);
         System.out.println("data deleted successfully="+f);
-
 	}
 	public void updateForum(Forum f) {
 		Session session=this.sessionFactory.getCurrentSession();
         session.update(f);
-        System.out.println("data updated successfully="+f);
-
-		
+        System.out.println("data updated successfully="+f);		
 	}
 	public Forum getForumById(int forumId) {
 		Session session=this.sessionFactory.getCurrentSession();
 		Forum f=(Forum) session.get(Forum.class,new Integer(forumId));
 		System.out.println("data of product by id="+f);
-		return f;	}
+		return f;	
+	}
 
 }

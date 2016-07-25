@@ -10,4 +10,5 @@ public interface UserService {
 	List<UserRegister> getAllUsers();
 	int getUserId(String emailId);
 	UserRegister getUserById(int userId);
+	public void updateUser(UserRegister u);
 }

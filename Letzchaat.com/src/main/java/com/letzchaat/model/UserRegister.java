@@ -14,11 +14,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Digits;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 @Table(name="user")
@@ -42,26 +44,11 @@ private String gender;
 @DateTimeFormat(pattern="mm/dd/yyyy")
 private Date dob;
 private boolean isActive;
-//private int blogsCount;
+private int blogsCount;
 private int forumsCount;
-@OneToMany(mappedBy="user",cascade = CascadeType.ALL, fetch=FetchType.EAGER)
-Set<Forum> forumDetails;
+@Transient
+MultipartFile image;
 
-/*default constructor*/
-public UserRegister(){}
-/**
- * @return the forumDetails
- */
-
-public Set<Forum> getForumDetails() {
-	return forumDetails;
-}
-/**
- * @param forumDetails the forumDetails to set
- */
-public void setForumDetails(Set<Forum> forumDetails) {
-	this.forumDetails = forumDetails;
-}
 /**
  * @return the id
  */
@@ -170,6 +157,21 @@ public boolean isActive() {
 public void setActive(boolean isActive) {
 	this.isActive = isActive;
 }
+/**
+ * @return the blogsCount
+ */
+public int getBlogsCount() {
+	return blogsCount;
+}
+/**
+ * @param blogsCount the blogsCount to set
+ */
+public void setBlogsCount(int blogsCount) {
+	this.blogsCount = blogsCount;
+}
+/**
+ * @return the forumsCount
+ */
 public int getForumsCount() {
 	return forumsCount;
 }
@@ -179,6 +181,22 @@ public int getForumsCount() {
 public void setForumsCount(int forumsCount) {
 	this.forumsCount = forumsCount;
 }
-
-	
+/**
+ * @return the image
+ */
+public MultipartFile getImage() {
+	return image;
+}
+/**
+ * @param image the image to set
+ */
+public void setImage(MultipartFile image) {
+	this.image = image;
+}
+/*default constructor*/
+public UserRegister(){}
+public String toString()
+{
+return getId()+" "+getEmailId()+" "+getFname();	
+}
 }

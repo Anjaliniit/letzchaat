@@ -1,10 +1,10 @@
 package com.letzchaat.controller;
 
 import java.security.Principal;
-
+import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
+import com.google.gson.Gson;
+import com.letzchaat.model.Blog;
 import com.letzchaat.model.Forum;
 import com.letzchaat.model.UserRegister;
 import com.letzchaat.service.BlogService;
@@ -64,6 +64,20 @@ public class AdminController {
 	@RequestMapping("/admin/adminPage")
 	public ModelAndView home(Model model)
 	{   
+		int users=0,blog=0,message=0;
+		List<UserRegister> l=userService.getAllUsers();
+	//	List<Contact>c=userService.getAllCustomer();
+		List<Blog>b=blogService.getAllBlogs();
+		for(Object o:l)
+		{
+			users++;
+		}
+		for(Object o1:b)
+		{
+			blog++;
+		}
+		model.addAttribute("users",users);
+		model.addAttribute("blog",blog);
 		return new ModelAndView("admin");
 	}
 	
@@ -93,8 +107,11 @@ public class AdminController {
 	/* request mapping of admin page of Add forum*/
 	@RequestMapping(value="/admin/forum/add",method=RequestMethod.POST)
 	public String adminForumAdd(@Valid @ModelAttribute("forum") Forum f,BindingResult result, Model model,HttpServletRequest request)
-	{ System.out.println("forum add");
-	
+	{   System.out.println("forum add");
+		Principal principal = request.getUserPrincipal();
+		int id=userService.getUserId(principal.getName());
+		UserRegister u=userService.getUserById(id);
+    
 	 
 		String s=null;
 		if(result.hasErrors())
@@ -103,18 +120,14 @@ public class AdminController {
 			s="/admin/forum";	
 		}		
 		else
-		{ if(f.getId()==0){
+		{ if(f.getForumid()==0){
 			System.out.println("success forum add");
-			Principal principal = request.getUserPrincipal();
-			int id=userService.getUserId(principal.getName());
-		    UserRegister u=userService.getUserById(id);
-		    System.out.println(u.getId());
-			f.setUser(u);
-			//u.getForumDetails().add(f);
+			System.out.println(u.getId());
+			f.setUserid(u.getId());
 		    forumService.addForum(f);
 			}		
 		    else
-		    {
+		    {	f.setUserid(u.getId());
 			    this.forumService.updateForum(f);		
 		    }
 			s="/admin/forum";
@@ -124,9 +137,8 @@ public class AdminController {
 	
 	/* request mapping of admin page of delete forum*/
 	@RequestMapping("/admin/delete/{id}")
-	String deleteProduct(@PathVariable("id") int id)
-	{
-		this.forumService.removeForum(id);
+	String deleteProduct(@PathVariable("id") int id, @ModelAttribute("forum") Forum f)
+	{	this.forumService.removeForum(id);
 		return "redirect:/admin/forum";
 	}
 	
@@ -135,19 +147,92 @@ public class AdminController {
     public String updateForum(@PathVariable("id") int id, Model model){
         model.addAttribute("forum", this.forumService.getForumById(id));
         model.addAttribute("listForum",this.forumService.getAllForums());
-        return "redirect:/admin/forum";
+        return "forum";
     }    
 	
 	/* request mapping of admin page of blog*/
+	
 	@RequestMapping("/admin/blog")
 	public ModelAndView adminBlog(Model model,HttpServletRequest request)
-	{	Forum f=new Forum();	
-	 	model.addAttribute("listblog", blogService.getAllBlogs());
+	{	Blog b=new Blog();	
+	 	model.addAttribute("listBlog", blogService.getAllBlogs());
 	 	//System.out.println(new Gson().toJson(forumService.getAllProducts()));
-		model.addAttribute("blog",f);
+		model.addAttribute("blog",b);
 		return new ModelAndView("blog");
 		
 	}
+			
+	/* request mapping of admin page of Add blog*/
+	@RequestMapping(value="/admin/blog/add",method=RequestMethod.POST)
+	public String adminForumAdd(@Valid @ModelAttribute("blog") Blog b,BindingResult result, Model model,HttpServletRequest request)
+	{ System.out.println("blog add");
+	
+	 
+		String s=null;
+		if(result.hasErrors())
+		{  System.out.println("error");
+		model.addAttribute("listBlog", blogService.getAllBlogs());
+			s="/admin/blog";	
+		}		
+		else
+		{ if(b.getBlogid()==0){
+			System.out.println("success blog add");
+			Principal principal = request.getUserPrincipal();
+			int id=userService.getUserId(principal.getName());
+		    UserRegister u=userService.getUserById(id);
+		    System.out.println(u.getId());
+			b.setUserid(u.getId());
+	        Date d=new Date();
+			b.setDate(d);
+			blogService.addBlog(b);
+			}		
+		    else
+		    {	
+			    this.blogService.updateBlog(b);		
+		    }
+			s="/admin/blog";
+		}
+		return "redirect:"+s;
+	}
+	
+	/* request mapping of admin page of delete blog*/
+	@RequestMapping("/admin/deleteb/{id}")
+	String deleteBlog(@PathVariable("id") int id, @ModelAttribute("forum") Forum f)
+	{	this.blogService.removeBlog(id);
+		return "redirect:/admin/blog";
+	}
+	
+	/* request mapping of admin page of edit blog*/
+	@RequestMapping("/admin/editb/{id}")
+    public String updateBlog(@PathVariable("id") int id, Model model){
+        model.addAttribute("blog", this.blogService.getBlogById(id));
+        model.addAttribute("listBlog",this.blogService.getAllBlogs());
+        return "blog";
+    }    
+
+	/*request mapping to view all blog*/
+	@RequestMapping("/admin/viewblog")
+	  public ModelAndView viewBlog(Model m)
+	  {
+		/*List<Blog>l= blogservice.getAllBlog();
+		
+		 m.addAttribute("blog",l);
+		  return "ViewBlog";*/
+		 Gson gson=new Gson();
+		 List<Blog>l= blogService.getAllBlogs();
+		 String json=gson.toJson(l);
+		 ModelAndView model=new ModelAndView("viewBlog");
+		 model.addObject("blogs",json);
+		  return model;
+	  }
+	 
+	
+	
+	
+	
+	
+	
+	
 	
 
 	

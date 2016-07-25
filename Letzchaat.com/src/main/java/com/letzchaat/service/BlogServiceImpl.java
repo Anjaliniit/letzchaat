@@ -21,13 +21,23 @@ public class BlogServiceImpl implements BlogService {
 	}
 	@Transactional
 	public void addBlog(Blog b) {
-		blogDAO.addBlog(b);
-		
+		blogDAO.addBlog(b);	
 	}
 	@Transactional
 	public List<Blog> getAllBlogs() {
-
 		return blogDAO.getAllBlogs();
+	}
+	@Transactional
+	public void removeBlog(int blogId) {
+		blogDAO.removeBlog(blogId);
+	}
+	@Transactional
+	public void updateBlog(Blog b) {
+		blogDAO.updateBlog(b);
+	}
+	@Transactional
+	public Blog getBlogById(int blogId) {
+		return blogDAO.getBlogById(blogId);
 	}
 
 }

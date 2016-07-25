@@ -19,7 +19,7 @@
 <div class="col-xs-9">
 
 <div class="container central">
-		<form:form action="${pageContext.request.contextPath}/signup" model="user" commandName="user" method="post">	
+		<form:form action="${pageContext.request.contextPath}/signup" model="user" commandName="user" method="post" enctype="multipart/form-data">	
 		<div class="row">
 			<div class=col-xs-3><form:label path="fname"><spring:message text="FirstName"/></form:label></div>
 			<div class=col-xs-4><form:input path="fname"/></div>
@@ -59,6 +59,11 @@
 			<div class=col-xs-3><form:label path="dob"><spring:message text="DateOfBirth"/></form:label></div>
 			<div class=col-xs-4><form:input path="dob"/></div>
 			<div class=col-xs-5><form:errors path="dob" cssStyle="color: #ff0000;"/></div>
+		</div>
+		<div class="row">
+			<div class=col-xs-3><form:label path="image"><spring:message text="Profile picture"/></form:label></div>
+			<div class=col-xs-4><form:input type="file" path="image"/></div>
+			<div class=col-xs-5><form:errors path="image" cssStyle="color: #ff0000;"/></div>
 		</div>		
 		<div class="row">
 			<div class=col-xs-3></div>

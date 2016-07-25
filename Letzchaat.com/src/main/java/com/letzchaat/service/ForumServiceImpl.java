@@ -23,13 +23,8 @@ public class ForumServiceImpl implements ForumService {
 	public void addForum(Forum forum) {
 		System.out.println("in forum service add");
 		forumDAO.addForum(forum);
-		
 	}
-	@Transactional
-	public Forum getForumByUserId(int userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 	@Transactional
 	public List<Forum> getAllForums() {
 		return forumDAO.getAllForums();

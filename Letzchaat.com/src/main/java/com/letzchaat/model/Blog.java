@@ -8,45 +8,79 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Table(name = "Blogs")
 @Entity
-public class Blog implements Serializable{
+public class Blog implements Serializable {
+	@Column(name = "blogid")
 	@Id
-	@Column(name="blogid")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int blogid;
 	private String title;
-	private String content;
-	private Date date;
-	private String userId;
-	public int getId() {
-		return id;
+	private String description;
+	Date date;
+	private int userid;
+	/**
+	 * @return the blogid
+	 */
+	public int getBlogid() {
+		return blogid;
 	}
-	public void setId(int id) {
-		this.id = id;
+	/**
+	 * @param blogid the blogid to set
+	 */
+	public void setBlogid(int blogid) {
+		this.blogid = blogid;
 	}
+	/**
+	 * @return the title
+	 */
 	public String getTitle() {
 		return title;
 	}
+	/**
+	 * @param title the title to set
+	 */
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getContent() {
-		return content;
+	/**
+	 * @return the description
+	 */
+	public String getDescription() {
+		return description;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	/**
+	 * @param description the description to set
+	 */
+	public void setDescription(String description) {
+		this.description = description;
 	}
+	/**
+	 * @return the date
+	 */
 	public Date getDate() {
 		return date;
 	}
+	/**
+	 * @param date the date to set
+	 */
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public String getUser() {
-		return userId;
+	/**
+	 * @return the userid
+	 */
+	public int getUserid() {
+		return userid;
 	}
-	public void setUser(String userid) {
-		this.userId = userId;
-	}	
-}
+	/**
+	 * @param userid the userid to set
+	 */
+	public void setUserid(int userid) {
+		this.userid = userid;
+	}
+	
+
+	}

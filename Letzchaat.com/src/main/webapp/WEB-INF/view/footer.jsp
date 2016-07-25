@@ -36,12 +36,12 @@ $(document).ready(function(){
 </script>
 
 
-
+<script src="${bjs}angular.min.js"></script>
 <script src="${bjs}jquery-2.1.1.min.js"></script>
     <script src="${bjs}bootstrap.min.js"></script>
     <footer class="container-fluid text-center">
   <a href="#myPage" title="To Top">
-    <span class="glyphicon glyphicon-chevron-up"></span>
+    <span  style="color: #1abc9c;" class="glyphicon glyphicon-chevron-up"></span>
   </a>
   <p>Copyright @2016 Letzchaat<a href="${pageContext.request.contextPath}" title="Visit Letzchaat"> www.Letzchaat.com</a></p>
 </footer>

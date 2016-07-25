@@ -10,18 +10,18 @@
 <head><title>LetZChaat</title>
 <link rel="stylesheet" href="${bcss}bootstrap.min.css"/>
 <link rel="stylesheet" href="${bcss}bootstrap-theme.min.css"/>
-<script src="${bjs}angular.min.js"></script>
- <script>function formSubmit()
+<script>function formSubmit()
  {
     document.getElementById("logout").submit();
-		 }
+ }
 </script>
 <style>
 <!--nav-bar script-->
 
 .active {
     background-color: #FFF;
-}
+    }
+
 .navbar {
 	  padding-top: 5px;
       padding-bottom: 5px;
@@ -44,11 +44,12 @@
       border-color: transparent;
       color: #fff !important;
   }
-  
+  <!--container-->
   .container-fluid about
   { margin-left: 20px;
   	padding: 60px 50px;					
   }
+  <!--carousel-->
  
  #myCarousel1 carousel-inner .item > img {
   display: block;
@@ -59,7 +60,7 @@
   bottom:-50px;
 }
 #myCarousel1 .carousel-inner {
-  margin-top:80px;
+  margin-top:90px;
    margin-bottom:50px;
 }
    .carousel-control.right, .carousel-control.left {
@@ -72,11 +73,24 @@
   .carousel-indicators li.active {
       background-color: #1abc9c;
   }
- 
+ <!--thumbnail-->
+ .thumbnail {
+    padding: 0 0 15px 0;
+    border: none;
+    border-radius: 0;
+}
+
+.thumbnail img {
+    width: 300px;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
   .logo {
       color: #1abc9c;
       font-size: 150px;
   }
+
   body{line-height: 1.8;}
  
     h4 {
@@ -93,16 +107,148 @@
       font-weight: 600;
       margin-bottom: 30px;
   }
+  .item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 70px 0;
+}
+
+.item span {
+    font-style: normal;
+}
+
+<!--sidebar-->  
+  .sidebar {
+    float: left;
+    width: 23%;
+	margin-top: 10px;
+} 
   
+  .sidebar h4 {
+	padding-bottom: 0;
+	font-size: 13px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: normal;
+	padding: 7px 7px;
+	border-bottom: 1px solid #A31923;
+  	background-color: #DE2D3A;
+}
+
+
+
+.sidebar h4 {
+	padding-bottom: 0;
+	font-size: 13px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: normal;
+	padding: 7px 7px;
+	border-bottom: 1px solid #A31923;
+  	background-color: #DE2D3A;
+}
+.sidebar1 h4 {
+	padding-bottom: 0;
+	font-size: 13px;
+	color: #fff;
+	text-transform: uppercase;
+	font-weight: normal;
+	padding: 7px 7px;
+	border-bottom: 1px solid #A31923;
+  	background-color: #DE2D3A;
+}
+.sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.sidebar1 ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.sidebar ul li {
+	background-color: #E6E7E9;
+	margin-bottom: 20px;
+	line-height: 1.9em;
+}
+.sidebar1 ul li {
+	background-color: #E6E7E9;
+	margin-bottom: 20px;
+	line-height: 1.9em;
+}
+
+.sidebar li ul {
+    list-style: none outside none;
+    margin: 0px;
+}
+.sidebar1 li ul {
+    list-style: none outside none;
+    margin: 0px;
+}
+
+.sidebar li ul li {
+	display: block;
+	border-top: none;
+	padding: 7px;
+	margin: 0;
+	line-height: 1.5em;
+	font-size: 13.5px;
+}
+.sidebar1 li ul li {
+	display: block;
+	border-top: none;
+	padding: 7px;
+	margin: 0;
+	line-height: 1.5em;
+	font-size: 13.5px;
+}
+
+.sidebar li ul li.text { 
+	border-bottom: none;
+}
+.sidebar1 li ul li.text { 
+	border-bottom: none;
+}
+.sidebar li ul li a {
+	font-weight: normal;
+}
+.sidebar1 li ul li a {
+	font-weight: normal;
+}
+
+.sidebar li ul li a:hover {
+}
+
+
+
+.sidebar li ul li a.readmore {
+   color: #799AC0;
+   font-weight: bold;
+}
+.sidebar1 li ul li a.readmore {
+   color: #799AC0;
+   font-weight: bold;
+}
+
+ 
+ 
+#body {
+   padding:10px;
+   padding-bottom:40px; 
+    margin-bottom:40px;  /* Height of the footer */
+}
   
 #main{height:100%;}
 
 <!--footer script-->
 #footer {
    position:absolute;
-   bottom:0px;
+   bottom:0;
    width:100%;
-   height:120px;   /* Height of the footer */
+     height:30px; /* Height of the footer */
 }
  footer .glyphicon {
       font-size: 20px;
@@ -200,7 +346,9 @@
     				<security:authentication var="user" property="principal.authorities" />
 					<security:authorize var="loggedIn" access="isAuthenticated()">
 					<security:authorize access="hasRole('ROLE_USER')">
+					<li><a href="${pageContext.request.contextPath}/user/Forum">FORUM</a></li>
 					<li><a href="${pageContext.request.contextPath}/user/blog">BLOG</a></li>
+					<li><a href="${pageContext.request.contextPath}/user/chat">CHAT</a></li>
 					</security:authorize>
 					</security:authorize>
 					</c:if>    
@@ -221,7 +369,7 @@
 					<li> </li>
 					<li> </li>
 					<li style="color:red"> Welcome <i>${pageContext.request.userPrincipal.name}</i></li>
-					<li> <a href="javascript:formSubmit()">Logout</a></li>
+					<li> <a href="javascript:formSubmit()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
 					</c:if>		
   
       <c:if  test="${pageContext.request.userPrincipal.name==null}">
@@ -234,8 +382,8 @@
   </div>
 </nav>
  
-
-
+<p>&nbsp;</p>
+<p>&nbsp;</p>
 
 
 

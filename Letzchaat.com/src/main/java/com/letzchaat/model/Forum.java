@@ -19,18 +19,25 @@ public class Forum implements Serializable {
 @Id
 @GeneratedValue(strategy=GenerationType.IDENTITY)
 @Column(name="forumid")	
-private int id;
+private int forumid;
 @NotEmpty(message="name can not be empty")
 @Column(name="forumname")
 private String name;
-
-@ManyToOne
-@JoinColumn(name ="userid")
-private UserRegister user;
+private int userid;
 @NotEmpty(message="topic can not be empty")
-private String topic; 
-
-public Forum(){}
+private String topic;
+/**
+ * @return the forumid
+ */
+public int getForumid() {
+	return forumid;
+}
+/**
+ * @param forumid the forumid to set
+ */
+public void setForumid(int forumid) {
+	this.forumid = forumid;
+}
 /**
  * @return the name
  */
@@ -44,18 +51,17 @@ public void setName(String name) {
 	this.name = name;
 }
 /**
- * @return the user
+ * @return the userid
  */
-public UserRegister getUser() {
-	return user;
+public int getUserid() {
+	return userid;
 }
 /**
- * @param user the user to set
+ * @param userid the userid to set
  */
-public void setUser(UserRegister user) {
-	this.user = user;
+public void setUserid(int userid) {
+	this.userid = userid;
 }
-
 /**
  * @return the topic
  */
@@ -67,18 +73,7 @@ public String getTopic() {
  */
 public void setTopic(String topic) {
 	this.topic = topic;
-}
+} 
 
-/**
- * @return the id
- */
-public int getId() {
-	return id;
-}
-/**
- * @param id the id to set
- */
-public void setId(int id) {
-	this.id = id;
-}
+
 }
