@@ -34,7 +34,7 @@
 			$.cometChat._disconnecting = false;
 			$.cometChat.loginUserName  = username;
 
-            var cometdURL = location.protocol + "//" + location.host + config.contextPath + "/LetChatz";
+            var cometdURL = location.protocol + "//" + location.host + config.contextPath + "/Letzchaat.com";
 
             $.cometd.configure({
                 url: cometdURL,

@@ -8,7 +8,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/cometd/ReloadExtension.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery-1.8.2.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery.cookie.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery.cometd-timesync.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery.cometd-timestamp.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery.cometd-reload.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery.cometd.js"></script>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery.cometd-ack.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/jquery/jquery.cometd-reload.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/chat.window.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/comet.chat.js"></script>

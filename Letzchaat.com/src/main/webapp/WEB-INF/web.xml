@@ -1,7 +1,9 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
-<web-app>
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+         
   <display-name>Archetype Created Web Application</display-name>
   <context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -37,13 +39,13 @@
 	</filter>
 	<filter-mapping>
 		<filter-name>continuation</filter-name>
-		<url-pattern>/Letzchaat/*</url-pattern>
+		<url-pattern>/Letzchaat.com/*</url-pattern>
 	</filter-mapping>
   
   
   <!-- Cometd Servlet -->
 	<servlet>
-		<servlet-name>Letzchaat</servlet-name>
+		<servlet-name>Letzchaat.com</servlet-name>
 		<servlet-class>org.cometd.annotation.AnnotationCometdServlet</servlet-class>
 		<init-param>
 			<param-name>timeout</param-name>
@@ -81,8 +83,9 @@
 	</servlet>
 	
  	  <servlet-mapping>
-		<servlet-name>Letzchaat</servlet-name>
-		<url-pattern>/Letzchaat/*</url-pattern>
+		<servlet-name>Letzchaat.com</servlet-name>
+		<url-pattern>/Letzchaat.com/*</url-pattern>
 	</servlet-mapping> 
+	
 </web-app>
   

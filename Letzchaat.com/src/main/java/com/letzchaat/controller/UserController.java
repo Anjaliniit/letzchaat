@@ -111,7 +111,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value="/login",method = RequestMethod.POST)
-	public String loginPagePost(@Valid @ModelAttribute("ulogin") UserRegister u,BindingResult result,Model model)
+	public String loginPagePost(@Valid @ModelAttribute("ulogin") UserRegister u,BindingResult result,Model model,@RequestParam("id") int id)
 	{ System.out.println("is going to login");
 		String value=null;
 		this.ulogin=u;
@@ -151,7 +151,7 @@ public class UserController {
 	}
 	
 	
-	/*
+	
 	@RequestMapping(value="/user/profile")
 	public ModelAndView profile(Model m,UserRegister u,Principal p)
 	{	
@@ -160,9 +160,10 @@ public class UserController {
 		int id=userService.getUserId(emailId);
 		u=userService.getUserById(id);
 		u.setId(id);
-		//m.addAttribute("user",u);
-		return new ModelAndView("profile", "user",u);
-	}*/
+		System.out.println(u.getId());
+		m.addAttribute("user",u);
+		return new ModelAndView("profile");
+	}
 	
 	/* request mapping of admin page of blog*/
 	@RequestMapping("/user/blog")

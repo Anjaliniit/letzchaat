@@ -7,7 +7,7 @@
 </div>
 <div id="body">
  <div class="container">
-  <form:form action="${pageContext.request.contextPath}/user/edit/${id}" class="form-horizontal well" commandName="user" modelAttribute="user">
+  <form:form action="${pageContext.request.contextPath}/user/edit/${user.id}" class="form-horizontal well" commandName="user">
     <h1>Edit Profile</h1>
   	<hr>
 	<div class="row">
@@ -15,7 +15,7 @@
       <div class="col-md-4">
         <div class="text-center">
          
-    <img src="/resources/images/${id}.jpg" class=".img-circle" height="300" width="300"/> 
+    <img src="/resources/images/${user.id}.jpg" class=".img-circle" height="300" width="300"/> 
          
           
         </div>

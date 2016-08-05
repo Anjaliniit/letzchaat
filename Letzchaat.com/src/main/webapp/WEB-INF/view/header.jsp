@@ -10,10 +10,12 @@
 <head><title>LetZChaat</title>
 <link rel="stylesheet" href="${bcss}bootstrap.min.css"/>
 <link rel="stylesheet" href="${bcss}bootstrap-theme.min.css"/>
-<script>function formSubmit()
+<script>
+function formSubmit()
  {
     document.getElementById("logout").submit();
  }
+
 </script>
 <style>
 <!--nav-bar script-->
@@ -331,21 +333,28 @@
                 </form>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
+      <c:if  test="${pageContext.request.userPrincipal.name==null}">
         <li class="active"><a href="${pageContext.request.contextPath}/index">HOME</a></li>
         <li><a href="#bulletin">BULLETIN</a></li>
         <li><a href="#aboutus">ABOUTUS</a></li>
-        
         <li><a href="${pageContext.request.contextPath}/index">JOBS</a></li>
+      </c:if>
+        
+        
         
          <c:if test="${pageContext.request.userPrincipal.name == 'admin@gmail.com'}">
+         			  <li class="active"><a href="${pageContext.request.contextPath}/admin/adminPage">HOME</a></li>
        				  <li><a href="${pageContext.request.contextPath}/admin/forum">FORUM</a></li>
                       <li><a href="${pageContext.request.contextPath}/admin/blog">BLOG</a></li>
                       <li><a href="${pageContext.request.contextPath}/admin/member">MEMBER</a></li>
+                      <li><a href="${pageContext.request.contextPath}/admin/jobs">JOBS</a></li>
      </c:if>
       <c:if test="${pageContext.request.userPrincipal.name != null}">
     				<security:authentication var="user" property="principal.authorities" />
 					<security:authorize var="loggedIn" access="isAuthenticated()">
 					<security:authorize access="hasRole('ROLE_USER')">
+					<li class="active"><a href="${pageContext.request.contextPath}/user/userHome">HOME</a></li>
+					<li><a href="${pageContext.request.contextPath}/user/profile">PROFILE</a></li>
 					<li><a href="${pageContext.request.contextPath}/user/Forum">FORUM</a></li>
 					<li><a href="${pageContext.request.contextPath}/user/blog">BLOG</a></li>
 					<li><a href="${pageContext.request.contextPath}/user/chat">CHAT</a></li>
